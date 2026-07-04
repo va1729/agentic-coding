@@ -4,11 +4,37 @@ Shared instructions for coding agents (Claude Code, Codex) working across team p
 
 ## Conventions
 
-- (fill in: commit style, branch naming, PR expectations)
+- Commits must follow conventional commits (enforced by commitlint where configured).
+- Do not skip pre-commit hooks (e.g. Husky + lint-staged). Fix the underlying issue instead.
 
 ## Architecture notes
 
 - (fill in: cross-cutting patterns agents should know about)
+
+## Editing Style
+
+- Prefer targeted edits over full file rewrites. Show only the changes needed.
+- Do not over-engineer: avoid abstractions, pagination, fallbacks, or extra parameters unless explicitly requested.
+- Group related changes (e.g. imports with their usages) in a single edit rather than separate steps, so they survive the formatter/linter together.
+
+## Installing Packages
+
+- Use the package manager directly (`bun add`, `uv add`, `npm install`, etc.) instead of hand-editing `package.json`/`pyproject.toml`. Always pin the version.
+- Update `.env.example` when adding or removing environment variables.
+
+## Frontend Conventions (React / TanStack / Emotion stack)
+
+- Absolute imports only (no `./` relative imports) where path aliases (`#/*`, `@/*`) are configured.
+- `console.log` is banned in committed code — only `console.warn`/`console.error` allowed.
+- Co-locate component styles inside the component file using CSS-in-JS (`@emotion/styled` or `@emotion/css`) rather than separate `.css`/`.module.css` files, once a project has standardized on Emotion.
+- Use template literal CSS in Emotion so hover, focus states, media queries, and animations read as natural CSS; design-token CSS variables work unchanged inside template literals.
+- Shared stateful primitives (common button/input/pill classes) belong in a single shared stylesheet; new one-off component styles go in the component file via Emotion.
+
+## Backend Conventions (Python / FastAPI stack)
+
+- basedpyright strict mode (not mypy) where configured — it treats attribute access on `Any` as `Unknown`, so prefer precise types over `cast(Any, ...)`.
+- Side-effecting first imports (e.g. telemetry/OTel provider registration) must stay the first import in the entrypoint module — don't let import-sorting tools reorder them.
+- Ruff (or equivalent) strips unused imports on sort — add new imports together with their usages in the same edit.
 
 ## Form Validation
 
