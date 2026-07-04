@@ -1,4 +1,4 @@
-# Team Agent Standards
+# Agentic Coding Standards
 
 Shared `AGENTS.md` instructions and Claude Code skills, kept out of individual project repos.
 
