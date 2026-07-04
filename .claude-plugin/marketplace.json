@@ -1,12 +1,12 @@
 {
-  "name": "team-agent-standards",
+  "name": "agentic-coding",
   "owner": {
     "name": "Vivekananda Athukuri"
   },
   "plugins": [
     {
-      "name": "team-standards",
-      "source": "./plugins/team-standards",
+      "name": "agentic-coding",
+      "source": "./plugins/agentic-coding",
       "description": "Shared coding standards and skills for the team"
     }
   ]
