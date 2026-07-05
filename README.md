@@ -20,8 +20,10 @@ project actually follow them, symlink the project's `CLAUDE.md` (or
 ln -sf ~/.claude/plugins/cache/agentic-coding/agentic-coding/<version>/AGENTS.md /path/to/project/CLAUDE.md
 ```
 
-The installed path is version-pinned, so re-point the symlink to the new
-`<version>` directory after running `/plugin update`.
+The installed path is version-pinned, so a `/plugin update` bump would
+normally break the symlink — a `SessionStart` hook shipped with the plugin
+(`plugins/agentic-coding/hooks/`) detects that and re-points it to the new
+`<version>` directory automatically at the start of your next session.
 
 Since this symlinked file is local to your machine, keep it out of the project's
 git status without touching the shared `.gitignore` — add it to the project's
