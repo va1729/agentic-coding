@@ -21,6 +21,14 @@ git clone <this-repo-url> ~/agentic-coding
 ln -sf ~/agentic-coding/plugins/agentic-coding/AGENTS.md /path/to/project/CLAUDE.md
 ```
 
+Since this symlinked file is local to your machine, keep it out of the project's
+git status without touching the shared `.gitignore` — add it to the project's
+git exclude instead:
+
+```
+echo "CLAUDE.md" >> /path/to/project/.git/info/exclude
+```
+
 ## Codex
 
 Symlink the shared `AGENTS.md` into Codex's global config so it applies to every project:
