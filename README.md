@@ -11,13 +11,23 @@ Installs directly from this private repo:
 /plugin install agentic-coding
 ```
 
+This gives you the skills, but Claude Code does not automatically feed the
+plugin's `AGENTS.md` conventions into a project as instructions. To have a
+project actually follow them, symlink the project's `CLAUDE.md` (or
+`AGENTS.md`) to this repo's shared file:
+
+```
+git clone <this-repo-url> ~/agentic-coding
+ln -sf ~/agentic-coding/plugins/agentic-coding/AGENTS.md /path/to/project/CLAUDE.md
+```
+
 ## Codex
 
 Symlink the shared `AGENTS.md` into Codex's global config so it applies to every project:
 
 ```
-git clone <this-repo-url> ~/team-agent-standards
-ln -sf ~/team-agent-standards/plugins/team-standards/AGENTS.md ~/.codex/AGENTS.md
+git clone <this-repo-url> ~/agentic-coding
+ln -sf ~/agentic-coding/plugins/agentic-coding/AGENTS.md ~/.codex/AGENTS.md
 ```
 
 ## Updating
