@@ -14,12 +14,14 @@ Installs directly from this private repo:
 This gives you the skills, but Claude Code does not automatically feed the
 plugin's `AGENTS.md` conventions into a project as instructions. To have a
 project actually follow them, symlink the project's `CLAUDE.md` (or
-`AGENTS.md`) to this repo's shared file:
+`AGENTS.md`) to the installed plugin's copy — no separate clone needed:
 
 ```
-git clone <this-repo-url> ~/agentic-coding
-ln -sf ~/agentic-coding/plugins/agentic-coding/AGENTS.md /path/to/project/CLAUDE.md
+ln -sf ~/.claude/plugins/cache/agentic-coding/agentic-coding/<version>/AGENTS.md /path/to/project/CLAUDE.md
 ```
+
+The installed path is version-pinned, so re-point the symlink to the new
+`<version>` directory after running `/plugin update`.
 
 Since this symlinked file is local to your machine, keep it out of the project's
 git status without touching the shared `.gitignore` — add it to the project's
