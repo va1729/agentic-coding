@@ -4,5 +4,7 @@
   "description": "Coding standards and skills for everyone",
   "author": {
     "name": "Vivekananda Athukuri"
-  }
+  },
+  "skills": "./skills/",
+  "hooks": "./hooks/hooks.json"
 }
